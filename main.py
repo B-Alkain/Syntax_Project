@@ -2,7 +2,7 @@ from model.hmm import HMM
 import pandas as pd
 
 def get_data(file):
-    df = pd.read_csv(file)
+    df = pd.read_csv(file, encoding="latin1")
     sentences = []
     for sentence in df['text'].to_list():
         sentences.append(sentence.split())
@@ -11,25 +11,44 @@ def get_data(file):
         tags.append(tag.split())
     return sentences, tags
 
-if __name__ == "__main__":
-    train_sentences, train_tags = get_data("datasets/ud_basque/ud_basque_train.csv")
-    # PROBA
-    sents = []
-    sents.append(train_sentences[0])
-    sents.append(train_sentences[2])    
+def accuracy(hmm, test_sentences, test_tags):
+    total = 0
+    correct = 0
     
-    tags = []
-    tags.append(train_tags[0])
-    tags.append(train_tags[2])
-    for sent, tag in zip(sents, tags):
-        print(f"SENTECE: {sent}, \n TAG: {tag} \n") 
-    hmm = HMM()
-    hmm.train(train_sentences=sents, train_tags=tags)
+    for words, gold_tags in zip(test_sentences, test_tags):
+        pred_tags = hmm.viterbi(words)
+        # por si acaso, recortamos a la misma longitud
+        for p, g in zip(pred_tags, gold_tags):
+            total += 1
+            if p == g:
+                correct += 1
+    
+    return correct / total if total > 0 else 0.0
 
-    test_sentence = train_sentences[0]  # ejemplo
-    predicted = hmm.viterbi(test_sentence)
-    print(predicted)
-    # print(train_sentences[0])
-    # print(train_tags[0])
+
+if __name__ == "__main__":
+    # Cargamos train, dev y test igual que en el notebook
+    train_sentences, train_tags = get_data("datasets/ud_basque/ud_basque_train.csv")
+    dev_sentences, dev_tags     = get_data("datasets/ud_basque/ud_basque_dev.csv")
+    test_sentences, test_tags   = get_data("datasets/ud_basque/ud_basque_test.csv")
+    
+    print(f"Nº oraciones entreno: {len(train_sentences)}")
+    print(f"Nº oraciones dev:    {len(dev_sentences)}")
+    print(f"Nº oraciones test:   {len(test_sentences)}")
+
+    # Entrenamos tu HMM con TODO el train
+    hmm = HMM()
+    hmm.train(train_sentences=train_sentences, train_tags=train_tags)
+
+    # Ejemplo de tagging de una frase del test
+    example_sent = test_sentences[0]
+    pred_tags = hmm.viterbi(example_sent)
+    print("Ejemplo de tagging:")
+    print(list(zip(example_sent, pred_tags)))
+
+    # Calculamos accuracy en test
+    acc_test = accuracy(hmm, test_sentences, test_tags)
+    print(f"Accuracy de tu HMM en test: {acc_test:.4f}")    
+
 
     
