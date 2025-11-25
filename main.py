@@ -25,6 +25,10 @@ if __name__ == "__main__":
         print(f"SENTECE: {sent}, \n TAG: {tag} \n") 
     hmm = HMM()
     hmm.train(train_sentences=sents, train_tags=tags)
+
+    test_sentence = train_sentences[0]  # ejemplo
+    predicted = hmm.viterbi(test_sentence)
+    print(predicted)
     # print(train_sentences[0])
     # print(train_tags[0])
 

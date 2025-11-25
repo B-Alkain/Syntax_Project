@@ -53,11 +53,59 @@ class HMM:
         transition_counts, emission_counts = self.get_counts(train_sentences, train_tags)
         self.get_probabilities(transition_counts, emission_counts)
     
+    def viterbi(self, sentence):
+        states = list(self.tags)   # conjunto de etiquetas
+        T = len(sentence)
 
-        
+        # 1. INITIALIZATION
+        V = [{} for _ in range(T)]
+        backpointer = [{} for _ in range(T)]
 
+        for tag in states:
+            pi_q = self.transitions[self.start_token].get(tag, 1e-12)
+            b_q_o1 = self.emissions[tag].get(sentence[0], 1e-12)
 
+            V[0][tag] = pi_q * b_q_o1
+            backpointer[0][tag] = None   # como en las diapositivas: 0 o None
 
-        
+        # 2. RECURSION
+        for t in range(1, T):
+            for tag in states:
 
+                emission_prob = self.emissions[tag].get(sentence[t], 1e-12)
 
+                # max over previous states
+                max_prob = -1
+                best_prev = None
+
+                for prev_tag in states:
+                    trans_prob = self.transitions[prev_tag].get(tag, 1e-12)
+                    prob = V[t-1][prev_tag] * trans_prob
+
+                    if prob > max_prob:
+                        max_prob = prob
+                        best_prev = prev_tag
+
+                # viterbi update
+                V[t][tag] = max_prob * emission_prob
+                backpointer[t][tag] = best_prev
+
+        # 3. TERMINATION (with STOP transition)
+        max_final_prob = -1
+        best_last_tag = None
+
+        for tag in states:
+            stop_prob = self.transitions[tag].get("STOP", 1e-12)
+            prob = V[T-1][tag] * stop_prob
+
+            if prob > max_final_prob:
+                max_final_prob = prob
+                best_last_tag = tag
+
+        # 4. BACKTRACKING
+        best_path = [best_last_tag]
+
+        for t in range(T-1, 0, -1):
+            best_path.insert(0, backpointer[t][best_path[0]])
+
+        return best_path
