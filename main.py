@@ -24,6 +24,20 @@ def accuracy(hmm, test_sentences, test_tags):
     
     return correct / total if total > 0 else 0.0
 
+def per_tag_accuracy(model, sentences, tags):
+    stats = {}  # tag → [aciertos, total]
+
+    for sent, gold in zip(sentences, tags):
+        pred = model.viterbi(sent)
+        for p, g in zip(pred, gold):
+            if g not in stats:
+                stats[g] = [0,0]
+            if p == g:
+                stats[g][0] += 1
+            stats[g][1] += 1
+
+    tag_acc = {tag: correct/total for tag, (correct,total) in stats.items()}
+    return tag_acc
 
 if __name__ == "__main__":
     # Cargamos train, dev y test igual que en el notebook
