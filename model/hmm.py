@@ -33,8 +33,8 @@ class HMM:
                 prev_tag = current_tag
 
             transition_counts[prev_tag]["STOP"] += 1
-        print(f"TRANSITION COUNTS: \n {transition_counts}")
-        print(f"EMISSION COUNTS: \n {emission_counts}")
+        # print(f"TRANSITION COUNTS: \n {transition_counts}")
+        # print(f"EMISSION COUNTS: \n {emission_counts}")
         return transition_counts, emission_counts
         
     def get_probabilities(self, transition_counts, emission_counts):
@@ -46,8 +46,8 @@ class HMM:
             sum_emissions = sum(words.values())
             for word, count in words.items():
                 self.emissions[tag][word] = count/sum_emissions
-        print(f"TRANSITION PROBS \n {self.transitions}")
-        print(f"EMISSION PROBS: \n {self.emissions}")
+        # print(f"TRANSITION PROBS \n {self.transitions}")
+        # print(f"EMISSION PROBS: \n {self.emissions}")
 
     def train(self, train_sentences, train_tags):
         transition_counts, emission_counts = self.get_counts(train_sentences, train_tags)
