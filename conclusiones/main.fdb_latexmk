@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1764422963.30987 "/home/alkain/Escritorio/Github_Repositorios/Syntax_Project/conclusiones/main.tex" "main.pdf" "main" 1764422964.57988 0
+["pdflatex"] 1764423210.20512 "/home/alkain/Escritorio/Github_Repositorios/Syntax_Project/conclusiones/main.tex" "main.pdf" "main" 1764423211.51236 0
   "/etc/texmf/web2c/texmf.cnf" 1744612925.12797 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/alkain/Escritorio/Github_Repositorios/Syntax_Project/conclusiones/main.tex" 1764422949.08631 8645 100b68a61e7823a69675eed7b48108ac ""
+  "/home/alkain/Escritorio/Github_Repositorios/Syntax_Project/conclusiones/main.tex" 1764423190.49133 952 1d17d327c58c1433c4191bfe142c0008 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
@@ -180,15 +180,19 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1751129837.091 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1751129848 8215785 3228b2528367af510e1a323b45568a56 ""
+  "chapters/conclusions.tex" 1764423106.62236 55 aa7d7e34537ea34a0f330f9873298500 ""
+  "chapters/introduction.tex" 1764423077.03166 1155 7e6ce58ca610c8d0742cf70fb01970d4 ""
+  "chapters/methodology.tex" 1764423091.276 3574 068776aa7a6cc21566c4a21d62084275 ""
+  "chapters/results.tex" 1764423103.35128 3018 08aad3d978486ad0871e5dc3f38cb39b ""
   "figuras/hmm_accuracy_ca.png" 1764422560.5527 83831 c622678bb38c16f0894de53ffe7ebfe9 ""
   "figuras/hmm_accuracy_eu.png" 1764422560.3607 80933 eb962dc906e95c4ba4a36e2fd18b14c9 ""
   "figuras/ngram_vs_hmm.png" 1764422564.96716 111668 8a7223c56366b8278dedd757028bbb2a ""
   "figuras/pos_accuracy_ca.png" 1764422567.2951 115133 2a589512d8675ade6de1687ce0191322 ""
   "figuras/pos_accuracy_eu.png" 1764422565.77082 114265 c44ec80ae33aec3a39f1d56674ac7c1a ""
-  "main.aux" 1764422964.51703 2985 4096f242821cd3768c3e83f0b9eb0b48 "pdflatex"
-  "main.out" 1764422964.51803 1155 1d6d4fac47cbc0bbae9abcbfac3f858c "pdflatex"
-  "main.tex" 1764422949.08631 8645 100b68a61e7823a69675eed7b48108ac ""
-  "main.toc" 1764422964.51803 663 6c3d52139509b84a28cc23710ccf5dfd "pdflatex"
+  "main.aux" 1764423211.44683 2985 4096f242821cd3768c3e83f0b9eb0b48 "pdflatex"
+  "main.out" 1764423211.44783 1155 1d6d4fac47cbc0bbae9abcbfac3f858c "pdflatex"
+  "main.tex" 1764423190.49133 952 1d17d327c58c1433c4191bfe142c0008 ""
+  "main.toc" 1764423211.44783 663 6c3d52139509b84a28cc23710ccf5dfd "pdflatex"
   (generated)
   "main.aux"
   "main.log"
