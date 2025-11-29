@@ -4,7 +4,7 @@ from sklearn.metrics import classification_report, confusion_matrix as sk_confus
 import numpy as np
 import pandas as pd
 
-def confusion_matrix(model, sentences, tags):
+def tag_whole_test(model, sentences, tags):
     gold_all = []
     pred_all = []
 
@@ -12,8 +12,11 @@ def confusion_matrix(model, sentences, tags):
         pred = model.viterbi(sent)
         gold_all.extend(gold)
         pred_all.extend(pred)
-    
-    cm = sk_confusion_matrix(gold_all, pred_all, labels=list(sorted(model.tags)))
+    return gold_all, pred_all
+
+def confusion_matrix(gold_all, pred_all, tags, title='Confusion matrix'):
+
+    cm = sk_confusion_matrix(gold_all, pred_all, labels=list(sorted(tags)))
     cm_norm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
     plt.figure(figsize=(12, 12))
     sns.heatmap(
@@ -22,11 +25,11 @@ def confusion_matrix(model, sentences, tags):
         fmt=".2f", # Format to 2 decimal places for percentages
         cmap="Blues",
         cbar=True,
-        xticklabels=model.tags,
-        yticklabels=model.tags
+        xticklabels=tags,
+        yticklabels=tags
     )
 
-    plt.title('Confusion matrix')
+    plt.title(title)
     plt.ylabel('True Class')
     plt.xlabel('Predicted Class')
     plt.show()
@@ -47,13 +50,13 @@ def report_to_dataframe(report):
 
     return df
 
-def per_tag_metrics(report):
+def per_tag_metrics(report, title = 'Per-Tag Performance: Precision, Recall, and F1-Score'):
     df = report_to_dataframe(report)
     fig, ax = plt.subplots(figsize=(12, 6))
     
     df.plot(kind='bar', ax=ax, width=0.8)
     
-    ax.set_title('Per-Tag Performance: Precision, Recall, and F1-Score', fontsize=16)
+    ax.set_title(title, fontsize=16)
     ax.set_ylabel('Score', fontsize=12)
     ax.set_xlabel('POS Tag', fontsize=12)
     ax.tick_params(axis='x', rotation=45)
@@ -64,7 +67,8 @@ def per_tag_metrics(report):
 
 
 def compare_reports(report1, report2, metric='f1-score', 
-                           model_name1='Our HMM', model_name2='Sklearn HMM'):
+                           model_name1='Our HMM', model_name2='Sklearn HMM',
+                           language=None):
     
     df1 = report_to_dataframe(report1)
     df2 = report_to_dataframe(report2)
@@ -83,7 +87,7 @@ def compare_reports(report1, report2, metric='f1-score',
     ax.set_xticklabels(tags, rotation=45, ha='right')
     ax.set_xlabel('Part-of-Speech Tag', fontweight='bold')
     ax.set_ylabel(f'{metric.upper()}', fontweight='bold')
-    ax.set_title(f'Comparison of {metric.upper()} by Tag: {model_name1} vs {model_name2}')
+    ax.set_title(f'Comparison of {metric.upper()} by Tag: {model_name1} vs {model_name2} [{language}]')
     ax.legend()
     plt.tight_layout()
     plt.show()
