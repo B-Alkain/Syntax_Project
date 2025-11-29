@@ -9,6 +9,8 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
 \usetikzlibrary{arrows.meta,positioning}
 
 % Ajustes básicos de estilo
@@ -23,7 +25,7 @@
   citecolor=blue!60!black
 }
 
-\title{Implementation of custom HMM for Basque and Catalan}
+\title{Implementation of custom HMM for Basque and Catalan\\\large Computational Syntax}
 \author{Josu Bayer, Ane Paniagua, Ander Pe\~na, Be\~nat Alkain}
 \date{\today}
 
@@ -61,9 +63,9 @@ To ground results, we train two implementations: (i) the reference \texttt{nltk}
 
 Evaluation is token-level accuracy on train/dev/test for both languages, complemented with per-tag accuracy to identify categories with higher error (e.g., infrequent or ambiguous tags). We also inspect POS frequency distributions to anticipate sparsity effects, and run qualitative Viterbi examples to verify that predicted tag transitions align with plausible syntactic sequences.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
-  \begin{tikzpicture}[>=Stealth, node distance=1.45cm, every node/.style={rectangle, rounded corners, draw=black!70, fill=blue!5, align=center, inner sep=6pt}]
+  \begin{tikzpicture}[>=Stealth, node distance=1.3cm, every node/.style={rectangle, rounded corners, draw=black!70, fill=blue!5, align=center, inner sep=5pt}, scale=0.9, transform shape]
     \node (load) {Load UD CSVs\\(Basque, Catalan)\\\small \texttt{datasets/}};
     \node (split) [below=of load] {Split train/dev/test\\\small \texttt{main.py}};
     \node (train) [below=of split] {Estimate HMM MLE\\transitions/emissions\\\small \texttt{model/hmm.py}};
@@ -80,9 +82,52 @@ Evaluation is token-level accuracy on train/dev/test for both languages, complem
 \end{figure}
 
 \section{Results}
-% Key metrics, tables, figures, and error analysis.
+\subsection{Overall accuracy by split and language}
+Figure~\ref{fig:acc-eu} and Figure~\ref{fig:acc-ca} compare token accuracy of the reference \texttt{nltk} HMM and our custom HMM on train/dev/test for Basque and Catalan. This mirrors the generative view from class: both models estimate \(p(y)\) (tag transitions) and \(p(x\mid y)\) and decode with Viterbi. Basque shows a larger dev/test gap because its agglutinative morphology yields many inflected forms that become rare or unseen at training time; Catalan, being less morphologically complex, suffers less from emission sparsity.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{hmm_accuracy_eu.png}
+  \caption{Basque: accuracy of NLTK HMM vs. custom HMM on train/dev/test.}
+  \label{fig:acc-eu}
+\end{figure}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{hmm_accuracy_ca.png}
+  \caption{Catalan: accuracy of NLTK HMM vs. custom HMM on train/dev/test.}
+  \label{fig:acc-ca}
+\end{figure}
+
+\subsection{Comparison with n-gram baselines}
+Backoff taggers encode bounded context (unigram/bigram/trigram), while HMMs model the joint \(p(x, y)\) combining transitions and emissions. Figure~\ref{fig:ngram} shows the gap between these families: the HMMs achieve higher accuracy because plausible tag transitions (e.g., ADJ\(\rightarrow\)NOUN) and word-tag likelihoods are scored together, aligning with the ``Colorless green ideas'' intuition discussed in class.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{ngram_vs_hmm.png}
+  \caption{Token accuracy: default/unigram/bigram/trigram vs. HMMs (Basque split).}
+  \label{fig:ngram}
+\end{figure}
+
+\subsection{Per-tag analysis}
+Figures~\ref{fig:per-tag-eu} and \ref{fig:per-tag-ca} detail per-tag accuracies for our HMM. Closed classes (DET, ADP, AUX, PUNCT) remain robust because they are frequent and have stable transitions; open classes (NOUN, VERB, PROPN, ADV) are more error-prone, especially in Basque, where inflection explodes vocabulary size and sparsifies \(p(x\mid y)\). This matches the theoretical limitation of generative HMMs on unknown or rare forms.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{pos_accuracy_eu.png}
+  \caption{Per-tag accuracy of our HMM on the Basque test set.}
+  \label{fig:per-tag-eu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{pos_accuracy_ca.png}
+  \caption{Per-tag accuracy of our HMM on the Catalan test set.}
+  \label{fig:per-tag-ca}
+\end{figure}
+
+\subsection{Qualitative checks}
+The notebook includes Viterbi decoding examples and joint-probability computations. Well-formed sequences (e.g., ADJ\(\rightarrow\)NOUN\(\rightarrow\)VERB) obtain higher joint probability than anomalous orders, echoing the ``Colorless green ideas'' contrast from class. Random samples drawn from the HMM also show plausible tag alternations, illustrating that learned transitions encode morpho-syntactic structure rather than semantics.
 
 \section{Conclusions}
 % Main findings and future work.
