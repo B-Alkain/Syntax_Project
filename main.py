@@ -113,9 +113,9 @@ if __name__ == "__main__":
     # 1. LOAD DATA
     # ---------------------------------------------
     print("---------------LOAD DATA---------------")
-    train_sentences, train_tags = get_data("datasets/ud_basque/ud_basque_train.csv")
-    dev_sentences, dev_tags     = get_data("datasets/ud_basque/ud_basque_dev.csv")
-    test_sentences, test_tags   = get_data("datasets/ud_basque/ud_basque_test.csv")
+    train_sentences, train_tags = get_data("datasets/ud_catalan/ud_catalan_train.csv")
+    dev_sentences, dev_tags     = get_data("datasets/ud_catalan/ud_catalan_dev.csv")
+    test_sentences, test_tags   = get_data("datasets/ud_catalan/ud_catalan_test.csv")
     
     print(f"# sentences in train: {len(train_sentences)}")
     print(f"# sentences in dev:    {len(dev_sentences)}")

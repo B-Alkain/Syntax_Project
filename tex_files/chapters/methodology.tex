@@ -18,7 +18,7 @@ We use the Universal Dependencies corpora for Basque and Catalan, each provided 
 
 The core model is a Hidden Markov Model that factorizes the joint sequence probability as \(p(x, y) = p(y)\,p(x\mid y)\). Transition probabilities \(p(y_i\mid y_{i-1})\) and emission probabilities \(p(x_i\mid y_i)\) are estimated by maximum likelihood counts over the training set, with explicit initial-state probabilities for sentence starts. The MLE parameter estimation and Viterbi decoding are implemented in \texttt{model/hmm.py} (methods \texttt{train} and \texttt{viterbi}), and the evaluation helpers for accuracy and per-tag accuracy live in \texttt{main.py}.
 
-To ground results, we train two implementations: (i) the reference \texttt{nltk} HMM tagger; (ii) our own HMM implementation using the same MLE recipe and Viterbi decoding as above. We also build backoff n-gram baselines (default, unigram, bigram, trigram) to quantify the benefit of sequential context over context-free tagging.
+We train two implementations: (i) the reference \texttt{nltk} HMM tagger; (ii) our own HMM implementation using the same MLE recipe and Viterbi decoding as above. We also build backoff n-gram baselines (default, unigram, bigram, trigram) to quantify the benefit of sequential context over context-free tagging.
 
 Evaluation is token-level accuracy on train/dev/test for both languages, complemented with per-tag accuracy to identify categories with higher error (e.g., infrequent or ambiguous tags). We also inspect POS frequency distributions to anticipate sparsity effects, and run qualitative Viterbi examples to verify that predicted tag transitions align with plausible syntactic sequences.
 

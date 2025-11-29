@@ -1,6 +1,6 @@
 \section{Results}
 \subsection{Overall accuracy by split and language}
-Figure~\ref{fig:acc-eu} and Figure~\ref{fig:acc-ca} compare token accuracy of the reference \texttt{nltk} HMM and our custom HMM on train/dev/test for Basque and Catalan. Numéricamente, para Euskera obtenemos 0.9569/0.8258/0.8189 (train/dev/test) con NLTK y 0.9693/0.8622/0.8560 con nuestro HMM; para Catalán 0.9703/0.9453/0.9430 frente a 0.9761/0.9477/0.9445. La brecha dev–test es mayor en Euskera (p.ej. 0.8622\(\rightarrow\)0.8560) que en Catalán (0.9477\(\rightarrow\)0.9445), reflejando mayor sparsidad de formas en el idioma aglutinante.
+Figure~\ref{fig:acc-eu} and Figure~\ref{fig:acc-ca} compare token accuracy of the reference \texttt{nltk} HMM and our custom HMM on train/dev/test for Basque and Catalan. Numerically, for Basque we obtain 0.9569/0.8258/0.8189 (train/dev/test) with NLTK and 0.9693/0.8622/0.8560 with our HMM; for Catalan 0.9703/0.9453/0.9430 versus 0.9761/0.9477/0.9445. The dev–test gap is larger in Basque (e.g., 0.8622\(\rightarrow\)0.8560) than in Catalan (0.9477\(\rightarrow\)0.9445), reflecting higher sparsity from agglutinative morphology.
 
 \begin{figure}[H]
   \centering
@@ -17,7 +17,7 @@ Figure~\ref{fig:acc-eu} and Figure~\ref{fig:acc-ca} compare token accuracy of th
 \end{figure}
 
 \subsection{Comparison with n-gram baselines}
-Backoff taggers encode bounded context (unigram/bigram/trigram), while HMMs model the joint \(p(x, y)\) combining transitions and emissions. En el test de Euskera los n-gram taggers alcanzan 0.859 (unigram), 0.866 (bigram) y 0.866 (trigram), ligeramente por encima de nuestro HMM (0.8560) pero por delante del HMM NLTK (0.8189). Para Catalán, los n-gram llegan a 0.921/0.935/0.935, claramente por debajo del HMM NLTK (0.9430) y del nuestro (0.9445). Figure~\ref{fig:ngram} visualiza estas diferencias al combinar transiciones plausibles (e.g., ADJ\(\rightarrow\)NOUN) con emisiones.
+Backoff taggers encode bounded context (unigram/bigram/trigram), while HMMs model the joint \(p(x, y)\) combining transitions and emissions. On the Basque test set the n-gram taggers reach 0.859 (unigram), 0.866 (bigram) and 0.866 (trigram), slightly above our HMM (0.8560) but ahead of the NLTK HMM (0.8189). For Catalan, n-grams reach 0.921/0.935/0.935, clearly below the NLTK HMM (0.9430) and ours (0.9445). Figure~\ref{fig:ngram} visualizes these differences when combining plausible transitions (e.g., ADJ\(\rightarrow\)NOUN) with emissions.
 
 \begin{figure}[H]
   \centering
@@ -27,7 +27,7 @@ Backoff taggers encode bounded context (unigram/bigram/trigram), while HMMs mode
 \end{figure}
 
 \subsection{Per-tag analysis}
-Figures~\ref{fig:per-tag-eu} and \ref{fig:per-tag-ca} detail per-tag accuracies for nuestro HMM. Aunque las barras muestran dispersión por etiqueta, el patrón cuantitativo es consistente: clases cerradas (DET, ADP, AUX, PUNCT) se agrupan en el rango alto, mientras las clases abiertas (NOUN, VERB, PROPN, ADV) bajan. En Euskera la caída es más pronunciada por el aumento de vocabulario y de emisiones escasas; en Catalán la variación es más contenida.
+Figures~\ref{fig:per-tag-eu} and \ref{fig:per-tag-ca} detail per-tag accuracies for our HMM. Although the bars vary by tag, the quantitative pattern is consistent: closed classes (DET, ADP, AUX, PUNCT) cluster at the top, while open classes (NOUN, VERB, PROPN, ADV) drop. In Basque the drop is sharper due to larger vocabulary and sparser emissions; in Catalan the spread is milder.
 
 \begin{figure}[H]
   \centering
@@ -44,9 +44,9 @@ Figures~\ref{fig:per-tag-eu} and \ref{fig:per-tag-ca} detail per-tag accuracies 
 \end{figure}
 
 \subsection{Qualitative checks}
-El cálculo de probabilidad conjunta para una oración de prueba en Euskera dio \(4.29\\times 10^{-13}\), coherente con la escala de productos de probabilidades en secuencias largas. Las muestras aleatorias del HMM muestran alternancias de etiquetas plausibles (ADJ\(\rightarrow\)NOUN\(\rightarrow\)VERB), reforzando la interpretación generativa de la secuencia.
+The joint probability for a Basque test sentence was \(4.29\times 10^{-13}\), consistent with multiplying probabilities over long sequences. Random samples from the HMM show plausible tag alternations (ADJ\(\rightarrow\)NOUN\(\rightarrow\)VERB), reinforcing the generative interpretation.
 
-\subsection{Detailed Basque test metrics}
+\subsection{Basque test metrics}
 Running \texttt{main.py} on the Basque test set yields 0.85595 accuracy. Table~\ref{tab:eu-metrics} summarizes precision/recall/F1 by tag; macro-F1 is 0.772 (macro recall 0.745) and weighted-F1 0.854, reflecting drops in rare classes (INTJ, SCONJ, X) and stability in frequent/closed ones (PUNCT, PART, CCONJ).
 
 \begin{table}[H]
@@ -79,6 +79,42 @@ Running \texttt{main.py} on the Basque test set yields 0.85595 accuracy. Table~\
     \textbf{Macro-F1}     & \multicolumn{3}{c}{0.772 (macro recall 0.745)} \\
     \textbf{Weighted-F1}  & \multicolumn{3}{c}{0.854} \\
     \textbf{Accuracy}     & \multicolumn{3}{c}{0.85595} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Catalan test metrics}
+Running \texttt{main.py} on the Catalan test set yields 0.94479 accuracy. Table~\ref{tab:ca-metrics} summarizes precision/recall/F1 by tag; macro-F1 is 0.836 (macro recall 0.827) and weighted-F1 0.944, showing higher overall performance and fewer drops on rare classes compared to Basque.
+
+\begin{table}[H]
+  \centering
+  \caption{Catalan test set: precision/recall/F1 by tag.}
+  \label{tab:ca-metrics}
+  \small
+  \begin{tabular}{lccc}
+    \toprule
+    Tag & Precision & Recall & F1 \\
+    \midrule
+    ADJ   & 0.906 & 0.870 & 0.888 \\
+    ADP   & 0.980 & 0.993 & 0.986 \\
+    ADV   & 0.927 & 0.949 & 0.938 \\
+    AUX   & 0.949 & 0.985 & 0.967 \\
+    CCONJ & 0.988 & 0.992 & 0.990 \\
+    DET   & 0.951 & 0.990 & 0.970 \\
+    INTJ  & 0.000 & 0.000 & 0.000 \\
+    NOUN  & 0.928 & 0.953 & 0.940 \\
+    NUM   & 0.922 & 0.824 & 0.870 \\
+    PART  & 1.000 & 0.190 & 0.320 \\
+    PRON  & 0.907 & 0.851 & 0.878 \\
+    PROPN & 0.924 & 0.832 & 0.876 \\
+    PUNCT & 0.984 & 0.992 & 0.988 \\
+    SCONJ & 0.776 & 0.916 & 0.840 \\
+    SYM   & 0.990 & 0.981 & 0.986 \\
+    VERB  & 0.954 & 0.919 & 0.936 \\
+    \midrule
+    \textbf{Macro-F1}     & \multicolumn{3}{c}{0.836 (macro recall 0.827)} \\
+    \textbf{Weighted-F1}  & \multicolumn{3}{c}{0.944} \\
+    \textbf{Accuracy}     & \multicolumn{3}{c}{0.94479} \\
     \bottomrule
   \end{tabular}
 \end{table}

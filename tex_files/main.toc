@@ -6,5 +6,6 @@
 \contentsline {subsection}{\numberline {3.2}Comparison with n-gram baselines}{4}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Per-tag analysis}{5}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Qualitative checks}{6}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Detailed Basque test metrics}{6}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Conclusions}{7}{section.4}%
+\contentsline {subsection}{\numberline {3.5}Basque test metrics}{6}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Catalan test metrics}{7}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}%

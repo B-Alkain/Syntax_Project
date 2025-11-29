@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.6.28)  29 NOV 2025 14:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.6.28)  29 NOV 2025 15:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -622,7 +622,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 ) (./chapters/methodology.tex [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 9.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -649,8 +649,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has 
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.1 \section
-            {Results}]
-<./figuras/hmm_accuracy_eu.png, id=79, 570.933pt x 353.1594pt>
+            {Results}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}]
+<./figuras/hmm_accuracy_eu.png, id=84, 570.933pt x 353.1594pt>
 File: ./figuras/hmm_accuracy_eu.png Graphic file (type png)
 <use ./figuras/hmm_accuracy_eu.png>
 Package pdftex.def Info: ./figuras/hmm_accuracy_eu.png  used on input line 7.
@@ -661,12 +661,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
                                                   \__shipout_drop_firstpage_...
 l.11 
      ]
-<./figuras/hmm_accuracy_ca.png, id=88, 570.933pt x 353.1594pt>
+<./figuras/hmm_accuracy_ca.png, id=93, 570.933pt x 353.1594pt>
 File: ./figuras/hmm_accuracy_ca.png Graphic file (type png)
 <use ./figuras/hmm_accuracy_ca.png>
 Package pdftex.def Info: ./figuras/hmm_accuracy_ca.png  used on input line 14.
 (pdftex.def)             Requested size: 364.19667pt x 225.28835pt.
-<./figuras/ngram_vs_hmm.png, id=90, 715.473pt x 353.1594pt>
+<./figuras/ngram_vs_hmm.png, id=95, 715.473pt x 353.1594pt>
 File: ./figuras/ngram_vs_hmm.png Graphic file (type png)
 <use ./figuras/ngram_vs_hmm.png>
 Package pdftex.def Info: ./figuras/ngram_vs_hmm.png  used on input line 24.
@@ -682,12 +682,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has
                                                   \__shipout_drop_firstpage_...
 l.28 
       <./figuras/hmm_accuracy_eu.png> <./figuras/hmm_accuracy_ca.png>]
-<./figuras/pos_accuracy_eu.png, id=100, 715.473pt x 353.1594pt>
+<./figuras/pos_accuracy_eu.png, id=105, 715.473pt x 353.1594pt>
 File: ./figuras/pos_accuracy_eu.png Graphic file (type png)
 <use ./figuras/pos_accuracy_eu.png>
 Package pdftex.def Info: ./figuras/pos_accuracy_eu.png  used on input line 34.
 (pdftex.def)             Requested size: 432.48051pt x 213.47078pt.
-<./figuras/pos_accuracy_ca.png, id=101, 715.473pt x 353.1594pt>
+<./figuras/pos_accuracy_ca.png, id=106, 715.473pt x 353.1594pt>
 File: ./figuras/pos_accuracy_ca.png Graphic file (type png)
 <use ./figuras/pos_accuracy_ca.png>
 Package pdftex.def Info: ./figuras/pos_accuracy_ca.png  used on input line 41.
@@ -702,41 +702,46 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.45 
-      <./figuras/ngram_vs_hmm.png> <./figuras/pos_accuracy_eu.png>]) (./chapters/conclusions.tex [6
+      <./figuras/ngram_vs_hmm.png> <./figuras/pos_accuracy_eu.png>] [6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1 \section
-            {Conclusions} <./figuras/pos_accuracy_ca.png>]
+l.85 
+      <./figuras/pos_accuracy_ca.png>]) (./chapters/conclusions.tex
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3.
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)) [7
+) [7
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.41 \end{document}
-                   {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}] (./main.aux)
+l.4   \item A
+             gainst backoff n-gram taggers, Basque trigram hits 0.866 (sligh...
+pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.4   \item A
+             gainst backoff n-gram taggers, Basque trigram hits 0.866 (sligh...]) [8{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 5FDD66818C0D40D9AC70F919B5C838F9;1361.
+(rerunfilecheck)             Checksum: B36DC07F548B868D0ED5423D6057DF37;1477.
  ) 
 Here is how much of TeX's memory you used:
- 23429 strings out of 474222
- 439556 string characters out of 5748733
- 1936975 words of memory out of 5000000
- 45153 multiletter control sequences out of 15000+600000
- 621368 words of font info for 126 fonts, out of 8000000 for 9000
+ 23446 strings out of 474222
+ 439751 string characters out of 5748733
+ 1941975 words of memory out of 5000000
+ 45155 multiletter control sequences out of 15000+600000
+ 621866 words of font info for 132 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,10n,87p,1070b,888s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (7 pages, 722893 bytes).
+Output written on main.pdf (8 pages, 721726 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 37998 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 203 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 38006 words of extra memory for PDF output out of 42996 (max. 10000000)
 
