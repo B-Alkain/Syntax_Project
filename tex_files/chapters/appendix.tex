@@ -1,0 +1,31 @@
+\appendix
+\section{Confusion matrices}
+\label{app:confusion}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{confusion_hmm_eu.png}
+  \caption{Confusion matrix for our HMM (Basque). Strong diagonal; confusions mostly in open classes.}
+  \label{fig:conf-hmm-eu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{confusion_hmm_ca.png}
+  \caption{Confusion matrix for our HMM (Catalan). Cleaner diagonal than Basque, reflecting fewer inflectional variants.}
+  \label{fig:conf-hmm-ca}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{confusion_nltk_eu.png}
+  \caption{Confusion matrix for NLTK HMM (Basque). Off-diagonal mass is higher than our HMM.}
+  \label{fig:conf-nltk-eu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{confusion_nltk_ca.png}
+  \caption{Confusion matrix for NLTK HMM (Catalan). Less noise than Basque, but still below our HMM.}
+  \label{fig:conf-nltk-ca}
+\end{figure}

@@ -43,6 +43,51 @@ Figures~\ref{fig:per-tag-eu} and \ref{fig:per-tag-ca} detail per-tag accuracies 
   \label{fig:per-tag-ca}
 \end{figure}
 
+\subsection{Per-tag bars and comparisons}
+Grouped bar charts from the classification reports summarize precision/recall/F1 by tag. Figures~\ref{fig:per-tag-bars-nltk-eu}–\ref{fig:per-tag-bars-nltk-ca} (NLTK) and \ref{fig:per-tag-bars-ours-eu}–\ref{fig:per-tag-bars-ours-ca} (ours) show how scores spread across tags; Figures~\ref{fig:per-tag-compare-eu}–\ref{fig:per-tag-compare-ca} compare F1 directly between models. Our HMM lifts most tags over NLTK in both languages, matching the macro-F1 gains reported numerically. Full confusion matrices are provided in Appendix~\ref{app:confusion}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{per_tag_nltk_eu.png}
+  \caption{Per-tag precision/recall/F1 (NLTK HMM, Basque). Higher variance across tags.}
+  \label{fig:per-tag-bars-nltk-eu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{per_tag_nltk_ca.png}
+  \caption{Per-tag precision/recall/F1 (NLTK HMM, Catalan).}
+  \label{fig:per-tag-bars-nltk-ca}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{per_tag_our_eu.png}
+  \caption{Per-tag precision/recall/F1 (Our HMM, Basque). Closed classes dominate; open classes drop.}
+  \label{fig:per-tag-bars-ours-eu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{per_tag_our_ca.png}
+  \caption{Per-tag precision/recall/F1 (Our HMM, Catalan). More uniform than Basque.}
+  \label{fig:per-tag-bars-ours-ca}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{compare_reports_eu.png}
+  \caption{Per-tag F1 comparison: Our HMM vs NLTK (Basque). Gains concentrated in frequent tags.}
+  \label{fig:per-tag-compare-eu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{compare_reports_ca.png}
+  \caption{Per-tag F1 comparison: Our HMM vs NLTK (Catalan). Broad improvements with small gaps.}
+  \label{fig:per-tag-compare-ca}
+\end{figure}
+
 \subsection{Qualitative checks}
 The joint probability for a Basque test sentence was \(4.29\times 10^{-13}\), consistent with multiplying probabilities over long sequences. Random samples from the HMM show plausible tag alternations (ADJ\(\rightarrow\)NOUN\(\rightarrow\)VERB), reinforcing the generative interpretation.
 

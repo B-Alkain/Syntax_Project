@@ -24,12 +24,35 @@
 \newlabel{fig:per-tag-eu}{{5}{5}{Per-tag accuracy of our HMM on the Basque test set}{figure.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Per-tag accuracy of our HMM on the Catalan test set.}}{6}{figure.6}\protected@file@percent }
 \newlabel{fig:per-tag-ca}{{6}{6}{Per-tag accuracy of our HMM on the Catalan test set}{figure.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Qualitative checks}{6}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Basque test metrics}{6}{subsection.3.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Basque test set: precision/recall/F1 by tag.}}{7}{table.2}\protected@file@percent }
-\newlabel{tab:eu-metrics}{{2}{7}{Basque test set: precision/recall/F1 by tag}{table.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Catalan test metrics}{7}{subsection.3.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Catalan test set: precision/recall/F1 by tag.}}{7}{table.3}\protected@file@percent }
-\newlabel{tab:ca-metrics}{{3}{7}{Catalan test set: precision/recall/F1 by tag}{table.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}\protected@file@percent }
-\gdef \@abspage@last{8}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Per-tag bars and comparisons}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Per-tag precision/recall/F1 (NLTK HMM, Basque). Higher variance across tags.}}{6}{figure.7}\protected@file@percent }
+\newlabel{fig:per-tag-bars-nltk-eu}{{7}{6}{Per-tag precision/recall/F1 (NLTK HMM, Basque). Higher variance across tags}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Per-tag precision/recall/F1 (NLTK HMM, Catalan).}}{7}{figure.8}\protected@file@percent }
+\newlabel{fig:per-tag-bars-nltk-ca}{{8}{7}{Per-tag precision/recall/F1 (NLTK HMM, Catalan)}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Per-tag precision/recall/F1 (Our HMM, Basque). Closed classes dominate; open classes drop.}}{7}{figure.9}\protected@file@percent }
+\newlabel{fig:per-tag-bars-ours-eu}{{9}{7}{Per-tag precision/recall/F1 (Our HMM, Basque). Closed classes dominate; open classes drop}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Per-tag precision/recall/F1 (Our HMM, Catalan). More uniform than Basque.}}{7}{figure.10}\protected@file@percent }
+\newlabel{fig:per-tag-bars-ours-ca}{{10}{7}{Per-tag precision/recall/F1 (Our HMM, Catalan). More uniform than Basque}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Per-tag F1 comparison: Our HMM vs NLTK (Basque). Gains concentrated in frequent tags.}}{8}{figure.11}\protected@file@percent }
+\newlabel{fig:per-tag-compare-eu}{{11}{8}{Per-tag F1 comparison: Our HMM vs NLTK (Basque). Gains concentrated in frequent tags}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Per-tag F1 comparison: Our HMM vs NLTK (Catalan). Broad improvements with small gaps.}}{8}{figure.12}\protected@file@percent }
+\newlabel{fig:per-tag-compare-ca}{{12}{8}{Per-tag F1 comparison: Our HMM vs NLTK (Catalan). Broad improvements with small gaps}{figure.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Qualitative checks}{8}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Basque test metrics}{8}{subsection.3.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Basque test set: precision/recall/F1 by tag.}}{9}{table.2}\protected@file@percent }
+\newlabel{tab:eu-metrics}{{2}{9}{Basque test set: precision/recall/F1 by tag}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Catalan test metrics}{9}{subsection.3.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Catalan test set: precision/recall/F1 by tag.}}{9}{table.3}\protected@file@percent }
+\newlabel{tab:ca-metrics}{{3}{9}{Catalan test set: precision/recall/F1 by tag}{table.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{10}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Confusion matrices}{11}{appendix.A}\protected@file@percent }
+\newlabel{app:confusion}{{A}{11}{Confusion matrices}{appendix.A}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Confusion matrix for our HMM (Basque). Strong diagonal; confusions mostly in open classes.}}{11}{figure.13}\protected@file@percent }
+\newlabel{fig:conf-hmm-eu}{{13}{11}{Confusion matrix for our HMM (Basque). Strong diagonal; confusions mostly in open classes}{figure.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Confusion matrix for our HMM (Catalan). Cleaner diagonal than Basque, reflecting fewer inflectional variants.}}{12}{figure.14}\protected@file@percent }
+\newlabel{fig:conf-hmm-ca}{{14}{12}{Confusion matrix for our HMM (Catalan). Cleaner diagonal than Basque, reflecting fewer inflectional variants}{figure.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Confusion matrix for NLTK HMM (Basque). Off-diagonal mass is higher than our HMM.}}{13}{figure.15}\protected@file@percent }
+\newlabel{fig:conf-nltk-eu}{{15}{13}{Confusion matrix for NLTK HMM (Basque). Off-diagonal mass is higher than our HMM}{figure.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Confusion matrix for NLTK HMM (Catalan). Less noise than Basque, but still below our HMM.}}{14}{figure.16}\protected@file@percent }
+\newlabel{fig:conf-nltk-ca}{{16}{14}{Confusion matrix for NLTK HMM (Catalan). Less noise than Basque, but still below our HMM}{figure.16}{}}
+\gdef \@abspage@last{14}

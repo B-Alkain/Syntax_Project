@@ -14,7 +14,7 @@ def tag_whole_test(model, sentences, tags):
         pred_all.extend(pred)
     return gold_all, pred_all
 
-def confusion_matrix(gold_all, pred_all, tags, title='Confusion matrix'):
+def confusion_matrix(gold_all, pred_all, tags, title='Confusion matrix', save_path=None):
 
     cm = sk_confusion_matrix(gold_all, pred_all, labels=list(sorted(tags)))
     cm_norm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
@@ -32,6 +32,9 @@ def confusion_matrix(gold_all, pred_all, tags, title='Confusion matrix'):
     plt.title(title)
     plt.ylabel('True Class')
     plt.xlabel('Predicted Class')
+    plt.tight_layout()
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.show()
     return cm_norm
 
@@ -50,7 +53,7 @@ def report_to_dataframe(report):
 
     return df
 
-def per_tag_metrics(report, title = 'Per-Tag Performance: Precision, Recall, and F1-Score'):
+def per_tag_metrics(report, title = 'Per-Tag Performance: Precision, Recall, and F1-Score', save_path=None):
     df = report_to_dataframe(report)
     fig, ax = plt.subplots(figsize=(12, 6))
     
@@ -63,12 +66,14 @@ def per_tag_metrics(report, title = 'Per-Tag Performance: Precision, Recall, and
     ax.legend(title='Metric')
     plt.tight_layout()
     print(f"Grouped bar chart")
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.show()
 
 
 def compare_reports(report1, report2, metric='f1-score', 
                            model_name1='Our HMM', model_name2='Sklearn HMM',
-                           language=None):
+                           language=None, save_path=None):
     
     df1 = report_to_dataframe(report1)
     df2 = report_to_dataframe(report2)
@@ -90,4 +95,6 @@ def compare_reports(report1, report2, metric='f1-score',
     ax.set_title(f'Comparison of {metric.upper()} by Tag: {model_name1} vs {model_name2} [{language}]')
     ax.legend()
     plt.tight_layout()
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.show()
