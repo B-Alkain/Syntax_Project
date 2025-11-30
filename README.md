@@ -1,31 +1,31 @@
 # Syntax Project
 
-Etiquetador PoS para euskera y catalán con datos de Universal Dependencies.
+PoS tagger for Basque and Catalan using Universal Dependencies data.
 
-## Estructura rápida
-- `main.py`: utilidades de evaluación (accuracy, per-tag accuracy) y función `get_data`.
-- `model/hmm.py`: implementación del HMM propio (entrenamiento MLE y Viterbi).
-- `POS_Tagger.ipynb`: notebook con experimentos: HMM NLTK vs HMM propio, n-gram taggers, gráficas y ejemplos cualitativos.
-- `utils/conll_to_csv.py`: conversión de `.conllu` a CSV con `pyconll`.
-- `datasets/ud_basque`, `datasets/ud_catalan`: splits train/dev/test en CSV.
-- `tex_files/`: memoria en LaTeX (`main.tex`, capítulos en `chapters/`, figuras en `figuras/`).
+## Structure
+- `main.py`: evaluation utilities (accuracy, per-tag accuracy, precision, recall and F1 reports) and `get_data`.
+- `model/hmm.py`: implementation of custom HMM.
+- `POS.ipynb`: notebook with experiments NLTK HMM vs custom HMM n-gram taggers, plots and qualitative examples.
+- `utils/conll_to_csv.py`: conversion from `.conllu` to CSV using `pyconll`.
+- `datasets/ud_basque`, `datasets/ud_catalan`: train/dev/test splits in CSV.
+- `tex_files/`:LaTeX report (`main.tex`, chapters in `chapters/`, figures in `figuras/`).
 
-## Notebook `POS_Tagger.ipynb`
-- Carga los CSV UD (train/dev/test) con `load_ud_csv` y valida longitudes palabra/tag.
-- Entrena HMM de NLTK y HMM propio, compara accuracies y n-gram taggers (default/unigram/bigram/trigram).
-- Genera gráficas (se guardan en `tex_files/figuras/`) y ejemplos de Viterbi, probabilidad conjunta y muestras aleatorias.
+## Notebook `POS.ipynb`
+- Loads UD CSV files (train/dev/test) with `load_ud_csv` and validates word/tag lengths.
+- Trains the NLTK HMM and the custom HMM, compares accuracies and n-gram taggers (default/unigram/bigram/trigram).
+- Generates plots (saved in `tex_files/figuras/`) and includes examples of Viterbi, joint probability and random samples.
 
-## Editar y compilar la memoria LaTeX
-1) Editar contenido: modificar los capítulos en `tex_files/chapters/` (introduction, methodology, results, conclusions). El archivo `tex_files/main.tex` solo orquesta el preámbulo y los `\input{...}`.
-2) Generar PDF en la raíz del repo:
-   - Con Makefile: `make main` crea `main.pdf`; `make summary` crea `summary.pdf`, ambos en la raíz.
-   - Sin Makefile: `pdflatex -interaction=nonstopmode -halt-on-error -output-directory=. -jobname=main tex_files/main.tex` (cambia `-jobname` a `summary` si lo prefieres).
+## Editing and compiling the LaTeX report
+1) Edit content: modify chaptes in `tex_files/chapters/` (introduction, methodology, results, conclusions). The file `tex_files/main.tex` just handles the preamble and the `\input{...}`.
+2) Generate the PDF in the repo root:
+   - With Makefile: `make main` creates `main.pdf`; `make summary` creates `summary.pdf`, both in the root.
+   - Without Makefile:  `pdflatex -interaction=nonstopmode -halt-on-error -output-directory=. -jobname=main tex_files/main.tex` (change `-jobname` to `summary` if preferred).
 
-### Dependencias LaTeX (Windows/Linux)
-- **Windows**: instalar MiKTeX (https://miktex.org/download) y añadir `pdflatex` al PATH. En VS Code, instalar la extensión LaTeX Workshop y compilar con el comando anterior desde el WSL/PowerShell.
-- **Linux**: instalar TeX Live básico (`sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended latexmk`). Compilar con el comando anterior o `make`.
-- Extensiones VS Code: LaTeX Workshop (compilación, vista previa) y, si se usa `Makefile`, la extensión Makefile Tools para ejecutar `make main`.
+### LaTeX dependencies (Windows/Linux)
+- **Windows**: install MiKTeX (https://miktex.org/download) and add `pdflatex` to PATH. In VS Code, install the LaTeX Workshop extension and compile using the command above from WSL/PowerShell.
+- **Linux**: install basic TeX Live (`sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended latexmk`). Compile using the command above or `make`.
+- VS Code Extensions: LaTeX Workshop (for compilation and preview) and, if using a Makefile, Makefile Tools to run `make main`.
 
-### Python (para los experimentos)
-- Recomendado usar un venv: `python3 -m venv .venv && source .venv/bin/activate`.
-- Instalar dependencias mínimas: `pip install scikit-learn numpy pandas nltk pyconll` (ajusta según necesidades del notebook/script).
+### Python (for the experiments)
+- Recommended to use a venv: `python3 -m venv .venv && source .venv/bin/activate`.
+- Install minimal dependencies: `pip install scikit-learn numpy pandas nltk pyconll` (adjust depending on the notebook/script needs).
